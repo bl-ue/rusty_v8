@@ -4421,11 +4421,11 @@ fn value_serializer_not_implemented() {
 }
 
 #[test]
-#[ignore] // TODO(ry) Segfaulting!
 fn clear_kept_objects() {
   let _setup_guard = setup();
 
   let isolate = &mut v8::Isolate::new(Default::default());
+  unsafe { crate::v8::isolate::v8__Isolate__Enter(&mut **isolate) }
   isolate.set_microtasks_policy(v8::MicrotasksPolicy::Explicit);
 
   let scope = &mut v8::HandleScope::new(isolate);
@@ -4447,6 +4447,8 @@ fn clear_kept_objects() {
   eval(scope, step1).unwrap();
   scope.clear_kept_objects();
   eval(scope, step2).unwrap();
+
+  unsafe { crate::v8::isolate::v8__Isolate__Exit(&mut ****scope) }
 }
 
 #[test]

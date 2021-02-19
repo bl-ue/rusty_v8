@@ -46,7 +46,7 @@ mod fixed_array;
 mod function;
 mod handle;
 pub mod icu;
-mod isolate;
+pub mod isolate;
 mod isolate_create_params;
 mod module;
 mod name;

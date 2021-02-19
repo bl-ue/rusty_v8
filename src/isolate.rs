@@ -166,8 +166,8 @@ extern "C" {
   fn v8__Isolate__SetData(this: *mut Isolate, slot: u32, data: *mut c_void);
   fn v8__Isolate__GetData(this: *const Isolate, slot: u32) -> *mut c_void;
   fn v8__Isolate__GetNumberOfDataSlots(this: *const Isolate) -> u32;
-  fn v8__Isolate__Enter(this: *mut Isolate);
-  fn v8__Isolate__Exit(this: *mut Isolate);
+  pub fn v8__Isolate__Enter(this: *mut Isolate);
+  pub fn v8__Isolate__Exit(this: *mut Isolate);
   fn v8__Isolate__ClearKeptObjects(isolate: *mut Isolate);
   fn v8__Isolate__LowMemoryNotification(isolate: *mut Isolate);
   fn v8__Isolate__GetHeapStatistics(this: *mut Isolate, s: *mut HeapStatistics);
